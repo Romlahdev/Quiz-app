@@ -22,6 +22,7 @@ body{
     background-repeat: no-repeat;
     height: 100vh;
     overflow: hidden;
+    
 }
 .card{
     width: 90%;
@@ -29,9 +30,13 @@ body{
 
     margin: 0 auto;
     /* max-height: 100vh; */
-
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 
 }
+
 
 .heading{
     font-size: 1.8rem;
@@ -53,13 +58,13 @@ body{
     font-weight: 600;
     font-family: sans-serif;
 
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     margin-left: 1.5rem;
 }
 
 .answer-cover{
     margin: 0 auto;
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
 
     width: 85%;
     height: 20rem;
@@ -113,7 +118,7 @@ body{
     width: 5rem;
     height: 3rem;
 
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     margin-left: 13.5rem;
 
     font-size: 1.3rem;
@@ -191,6 +196,19 @@ body{
     font-size: 1.6rem;
 }
 
+.prev{
+    margin-top: 2rem;
+
+
+    font-size: 1.5rem;
+}
+
+.prev span{
+
+    font-size: 1.5rem;
+
+}
+
 
 
 
@@ -224,7 +242,6 @@ body{
     margin: 0 auto;
     width: 70%;          
 
-    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -232,6 +249,8 @@ body{
 
     gap: 1rem;
     color: white;
+
+
 }
 
 h1{

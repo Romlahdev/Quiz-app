@@ -6,7 +6,7 @@ const questions = [
 
     {
         question: "Which of these is an HTML element?",
-        options: ["div", "img", "button"],
+        options: ["unshift", "button", "apple"],
         answer: 1
     },
 
@@ -16,54 +16,59 @@ const questions = [
         answer: 1
     },
 
-    {
-        question: "JavaScript handles what part of a webpage?",
-        options: ["function", "html", "css"],
-        answer: 0
-    },
+    
+{
+    question: "JavaScript handles what part of a webpage?",
+    options: ["function", "html", "css"],
+    answer: 0
+},
 
-    {
-        question: "HTML is what type of language?",
-        options: ["server", "css", "markup"],
-        answer: 2
-    },
+{
+    question: "HTML is what type of language?",
+    options: ["server", "css", "markup"],
+    answer: 2
+},
 
-    {
-        question: "Which property sets text color in CSS?",
-        options: ["color", "hight", "width"],
-        answer: 0
-    },
+{
+    question: "Which property sets text color in CSS?",
+    options: ["color", "hight", "width"],
+    answer: 0
+},
 
-    {
-        question: "Tag for ordered list?",
-        options: ["ul", "ol", "li"],
-        answer: 1
-    },
+{
+    question: "Tag for ordered list?",
+    options: ["ul", "ol", "li"],
+    answer: 1
+},
 
-    {
-        question: "Which is NOT a JavaScript type?",
-        options: ["string", "number", "element"],
-        answer: 2
-    },
+{
+    question: "Which is NOT a JavaScript type?",
+    options: ["string", "number", "element"],
+    answer: 2
+},
 
-    {
-        question: "Which tag is used for images?",
-        options: ["img", "pic", "src"],
-        answer: 0
-    },
+{
+    question: "Which tag is used for images?",
+    options: ["img", "pic", "src"],
+    answer: 0
+},
 
-    {
-        question: "Which method adds an element in JS?",
-        options: ["push", "add", "new"],
-        answer: 0
-    },
+{
+    question: "Which method adds an element in JS?",
+    options: ["push", "add", "new"],
+    answer: 0
+},
 
-    {
-        question: "What symbol is used for IDs in CSS?",
-        options: ["#", ".", "*"],
-        answer: 0
-    },
+{
+    question: "What symbol is used for IDs in CSS?",
+    options: ["#", ".", "*"],
+    answer: 0
+},
+
+  
 ];
+
+
 
 
 
@@ -78,6 +83,14 @@ const questions = [
     const card = document.getElementById("card");
 
 
+    const prev = document.querySelector(".prev span");
+
+    let savedScore = localStorage.getItem("prevScore");
+
+    prev.textContent= savedScore ? parseInt(savedScore) : 0;
+
+    
+
     // disable next button by default
     document.getElementById("next").disabled = true;
 
@@ -87,7 +100,9 @@ const questions = [
 
         homeCover.style.display="none";
 
-        card.style.display="block"
+        card.style.display="flex"
+
+        
 
     });
 
@@ -157,11 +172,26 @@ const questions = [
 
             optionBtn.appendChild(optiontext)
 
+            let clickCount = 0;
+
             optionBtn.onclick = () => {
 
-                selectAnswer(index)
+                
 
-                radio.checked=true;
+                clickCount++
+
+                if(clickCount === 1){
+
+                    selectAnswer(index);
+                    radio.checked=true;
+
+                    
+                    
+                }else{
+                    radio.checked = false;
+                }
+
+                
 
             };
 
@@ -169,9 +199,13 @@ const questions = [
 
             optionsCover.addEventListener("click", (event)=>{
 
-                if (event.target !== optionBtn) {
+                if (event.target == optionBtn || event.target== optiontext) {
                     
-                    radio.checked=false
+                    radio.checked=true;
+
+                }else{
+
+                    radio.checked=false;
 
                 }
 
@@ -188,6 +222,7 @@ const questions = [
                 
                 if(selectedAnswer === currentQuestion.answer){
                     score++
+                    
                     
                 }
 
@@ -254,7 +289,7 @@ const questions = [
 
         const resultPage = document.querySelector(".result-cover");
 
-        resultPage.style.display="block"
+        resultPage.style.display="flex"
 
         console.log(score);
 
@@ -267,6 +302,9 @@ const questions = [
         number.textContent="0" + score;
 
         totals.textContent="0" +  questions.length;
+
+
+        localStorage.setItem("prevScore", score);
 
 
     }
